@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import './App.css';
 import styled from 'styled-components'
@@ -12,24 +12,30 @@ const App = () => {
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
+
   useEffect(() => {
     axios.get('https://rickandmortyapi.com/api/character/')
-    .then((res) => {
-      setData(res.data.results)
-      // console.log(res.data.results)
-    })
-    .catch((err) =>{
-      console.log('Error with API get request', err)
-    })
+      .then((res) => {
+        setData(res.data.results)
+      })
+      .catch((err) => {
+        console.log('Error with API get request', err)
+      })
   }, [])
-  
+
   return (
     <div className="App">
-      <h1 className="Header">The Rick and Morty Show</h1>
+      <TitleContainer>
+        <h1 className="Header">
+          <i className="fas fa-space-shuttle"></i>
+          {' '}The Rick and Morty Show{' '}
+          <i className="fas fa-user-astronaut"></i>
+        </h1>
+      </TitleContainer>
       <CharacterCast>{
         data.map((character, index) => {
           return (
-            <Character key={index} character={character}/>
+            <Character key={index} character={character} />
           )
         })
       }</CharacterCast>
@@ -42,10 +48,19 @@ const CharacterCast = styled.ul`
   flex-flow: row wrap;
   justify-content: space-between;
   align-content:center;
-  /* background: black; */
   width: 80%;
-  margin: 2% auto;
+  margin: 1% auto 3% auto;
   list-style-type: none;
+`
+
+const TitleContainer = styled.header`
+  text-align: center;
+  padding: 0.5% 0;
+  background:cornsilk;
+
+  h1 i {
+        color: lightcoral;
+    }
 `
 
 export default App;

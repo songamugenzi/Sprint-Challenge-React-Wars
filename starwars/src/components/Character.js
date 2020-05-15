@@ -11,13 +11,19 @@ function Character(props) {
             </div>
             <div className="textBio">
                 <h3>{name}</h3>
-                <p>{` `}
+                <p>
                     <span>
-                        Species{` `}
-                        <i className="fas fa-dna"></i>{` `}:{` `}
-                    </span>{species}
+                        Species{' '}
+                        <i className="fas fa-dna"></i>{' '}:{' '}
+                    </span>
+                    {species}
                 </p>
-                <p>{`Status: ${status}`}</p>
+                <p>
+                    <span>
+                        Status{' '}:{' '}
+                    </span>
+                    {status}
+                </p>
             </div>
         </CharacterBio>
     )
@@ -25,10 +31,10 @@ function Character(props) {
 
 const CharacterBio = styled.li`
     color: #333;
-    background: aliceblue;
+    background: lavender;
     text-align: left;
     margin-top: 5%;
-    border-radius: 12px 12px 0 0;
+    border-radius: 12px;
 
     img {
         border-radius: 12px 12px 0 0;
@@ -44,7 +50,11 @@ const CharacterBio = styled.li`
     }
 
     span {
+        font-weight: 300;
 
+        i {
+        color: #0788BC;
+        }
     }
 `
 
